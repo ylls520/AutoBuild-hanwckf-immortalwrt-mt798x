@@ -14,7 +14,7 @@ name: mt7981-ax3000-mtwifi-cfg 闭源固件
 #开启写权限，防止无法上传到release
 
 on: 
-  repository_dispatch:
+  workflow_dispatch:
 #  schedule:
 #    - cron: 0 16 * * *
 
