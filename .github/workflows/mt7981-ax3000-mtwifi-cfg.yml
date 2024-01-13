@@ -81,7 +81,7 @@ jobs:
     - name: 加载.config设置
       run: |
         cd openwrt
-        cp -f defconfig/mt7981-ax3000-mtwifi-cfg.config .config
+        cp -f defconfig/mt7981-ax3000.config .config
         
     - name: 下载软件包
       id: package
