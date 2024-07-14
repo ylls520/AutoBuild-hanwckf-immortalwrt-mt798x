@@ -81,7 +81,7 @@ jobs:
     - name: 加载.config设置
       run: |
         cd openwrt
-        cp -f defconfig/mt7986-ax6000.config .config
+        cp -f defconfig/mt7986-ax6000-mtwifi-cfg.config .config
         echo CONFIG_PACKAGE_kmod-wireguard=y >> .config
         
     - name: 下载软件包
