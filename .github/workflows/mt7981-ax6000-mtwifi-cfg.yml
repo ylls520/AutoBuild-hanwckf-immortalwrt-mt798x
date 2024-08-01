@@ -127,7 +127,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-ax3000-mtwifi-cfg">> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-ax6000-mtwifi-cfg">> $GITHUB_OUTPUT
         touch release.txt
         echo -e "immortalwrt-mt798x-ax6000-mtwifi-cfg 源码版本" >> release.txt
         echo "📥 固件下载" >> release.txt
