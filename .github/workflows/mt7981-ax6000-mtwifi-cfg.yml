@@ -19,8 +19,8 @@ on:
 #    - cron: 0 16 * * *
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
-  REPO_BRANCH: openwrt-21.02
+  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-24.10
+  REPO_BRANCH: 2410
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
@@ -81,7 +81,7 @@ jobs:
     - name: 加载.config设置
       run: |
         cd openwrt
-        cp -f defconfig/mt7986-ax6000-mtwifi-cfg.config .config
+        cp -f defconfig/mt7986-ax6000.config .config
         echo CONFIG_PACKAGE_kmod-wireguard=y >> .config
         
     - name: 下载软件包
