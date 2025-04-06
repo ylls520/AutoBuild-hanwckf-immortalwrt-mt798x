@@ -83,8 +83,8 @@ jobs:
       run: |
         cd openwrt
         cp -f defconfig/mt7981-ax3000.config .config
-        cat ../config/kmod_config >> .config
-        cat ../config/luci_config >> .config
+        cat $GITHUB_WORKSPACE/config/kmod_config >> .config
+        cat $GITHUB_WORKSPACE/config/luci_config >> .config
         
     - name: 下载软件包
       id: package
