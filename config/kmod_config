@@ -1,4 +1,4 @@
-ONFIG_PACKAGE_kmod-nft-tproxy=y
-ONFIG_PACKAGE_kmod-nft-socket=y
-ONFIG_PACKAGE_kmod-netlink-diag=y
-ONFIG_PACKAGE_kmod-wireguard=y
+CONFIG_PACKAGE_kmod-nft-tproxy=y
+CONFIG_PACKAGE_kmod-nft-socket=y
+CONFIG_PACKAGE_kmod-netlink-diag=y
+CONFIG_PACKAGE_kmod-wireguard=y
