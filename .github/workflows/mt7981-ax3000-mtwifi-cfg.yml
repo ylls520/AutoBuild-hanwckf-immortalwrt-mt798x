@@ -83,7 +83,8 @@ jobs:
       run: |
         cd openwrt
         cp -f defconfig/mt7981-ax3000.config .config
-        echo CONFIG_PACKAGE_kmod-wireguard=y >> .config
+        cat ../config/kmod_config >> .config
+        cat ../config/luci_config >> .config
         
     - name: 下载软件包
       id: package
