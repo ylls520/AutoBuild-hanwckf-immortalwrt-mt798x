@@ -71,6 +71,12 @@ jobs:
       run: |
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: 自定义脚本1
+      run: |
+        chmod +x diy-part1.sh
+        cd openwrt
+        $GITHUB_WORKSPACE/diy-part1.sh
         
     - name: 更新 & 安装 feeds
       run: |
@@ -82,8 +88,12 @@ jobs:
       run: |
         cd openwrt
         cp -f defconfig/mt7981-ax3000.config .config
-        cat $GITHUB_WORKSPACE/config/kmod_config >> .config
-        cat $GITHUB_WORKSPACE/config/luci_config >> .config
+
+    - name: 自定义脚本2
+      run: |
+        chmod +x diy-part2.sh
+        cd openwrt
+        $GITHUB_WORKSPACE/diy-part2.sh
         
     - name: 下载软件包
       id: package
