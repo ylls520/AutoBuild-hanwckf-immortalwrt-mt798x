@@ -72,17 +72,11 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: 自定义脚本1
+    - name: 自定义 & 更新 & 安装 feeds
       run: |
-        chmod +x diy-part1.sh
+        chmod +x diy-feeds.sh
         cd openwrt
-        $GITHUB_WORKSPACE/diy-part1.sh
-        
-    - name: 更新 & 安装 feeds
-      run: |
-        cd openwrt
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+        $GITHUB_WORKSPACE/diy-feeds.sh
 
     - name: 加载.config设置
       run: |
