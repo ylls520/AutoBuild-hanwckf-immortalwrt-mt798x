@@ -1,13 +1,3 @@
-##
-#
-# 感谢p3terx大神的一键编译脚本
-# 
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-#
-#修改以下代码或者开启触发开关都好，要严格按格式对好,前面有多少空格也要看清楚
-#代码里有 name: 后面的内容随便改,冒号后面是有个空格的,如果修改固件名字就要考虑能不能显示出你想要的
-
 name: mt7981-ax6000-mtwifi-cfg 闭源固件
 
 #permissions: write-all
@@ -24,6 +14,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  CONFIG_FILE: mt7986-ax6000.config
 
 jobs:
   build:
@@ -72,17 +63,17 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
-    - name: 更新 & 安装 feeds
+    - name: 自定义 & 更新 & 安装 feeds
       run: |
+        chmod +x diy-feeds.sh
         cd openwrt
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+        $GITHUB_WORKSPACE/diy-feeds.sh
 
-    - name: 加载.config设置
+    - name: 自定义.config设置
       run: |
+        chmod +x diy-config.sh
         cd openwrt
-        cp -f defconfig/mt7986-ax6000.config .config
-        echo CONFIG_PACKAGE_kmod-wireguard=y >> .config
+        $GITHUB_WORKSPACE/diy-config.sh
         
     - name: 下载软件包
       id: package
